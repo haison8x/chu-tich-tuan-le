@@ -1,0 +1,47 @@
+{
+"update_url": "https://clients2.google.com/service/update2/crx",
+
+  "name": "shopee.vn - Cào",
+  "version": "2.0",
+  "description": "Cào data từ shopee",
+  "permissions": ["tabs", "activeTab", "declarativeContent"],
+  "page_action": {
+    "default_popup": "popup.html",
+    "default_title": "Shopee Crawler",
+    "default_icon": {
+      "16": "images/icon16.png",
+      "48": "images/icon48.png",
+      "128": "images/icon128.png"
+    }
+  },
+  "options_page": "options.html",
+  "icons": {
+    "16": "images/icon16.png",
+    "48": "images/icon48.png",
+    "128": "images/icon128.png"
+  },
+  "background": {
+    "scripts": ["scripts/background.js"],
+    "persistent": false
+  },
+  "web_accessible_resources": [
+    "images/icon16.png",
+    "images/icon48.png",
+    "images/icon128.png"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["https://shopee.vn/*"],
+      "all_frames": true,
+      "js": [
+        "assets/jquery.js",
+        "scripts/page-extractor.js",
+        "scripts/product-extractor.js",
+        "scripts/report-page.js",
+        "scripts/content-script.js"
+      ],
+      "css": []
+    }
+  ],
+  "manifest_version": 2
+}
